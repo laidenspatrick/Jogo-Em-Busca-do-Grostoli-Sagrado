@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/GameOver.gd" id="1_script"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.05, 0.05, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 150.0
+offset_right = 940.0
+offset_bottom = 240.0
+horizontal_alignment = 1
+text = "GAME OVER"
+theme_override_font_sizes/font_size = 56
+theme_override_colors/font_color = Color(0.95, 0.2, 0.2, 1)
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 250.0
+offset_right = 940.0
+offset_bottom = 290.0
+horizontal_alignment = 1
+text = "O gaúcho caiu... mas não desiste, tchê!"
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(1, 1, 1, 0.7)
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 360.0
+offset_right = 840.0
+offset_bottom = 420.0
+text = "TENTAR NOVAMENTE"
+theme_override_font_sizes/font_size = 24
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 440.0
+offset_right = 840.0
+offset_bottom = 500.0
+text = "MENU PRINCIPAL"
+theme_override_font_sizes/font_size = 24
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

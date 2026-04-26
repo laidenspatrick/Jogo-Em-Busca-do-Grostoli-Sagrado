@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(28, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+size = Vector2(44, 32)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.15, 0.45, 0.15, 1)
+polygon = PackedVector2Array(-14, -24, 14, -24, 14, 24, -14, 24)
+
+[node name="Hat" type="Polygon2D" parent="."]
+color = Color(0.4, 0.22, 0.1, 1)
+polygon = PackedVector2Array(-18, -28, 18, -28, 16, -24, -16, -24)
+
+[node name="HatTop" type="Polygon2D" parent="."]
+color = Color(0.35, 0.2, 0.08, 1)
+polygon = PackedVector2Array(-10, -35, 10, -35, 12, -28, -12, -28)
+
+[node name="Belt" type="Polygon2D" parent="."]
+color = Color(0.3, 0.15, 0.05, 1)
+polygon = PackedVector2Array(-14, 2, 14, 2, 14, 6, -14, 6)
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(30, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("RectangleShape2D_attack")
+
+[node name="AttackVisual" type="Polygon2D" parent="AttackArea"]
+visible = false
+color = Color(0.8, 0.8, 0.2, 0.5)
+polygon = PackedVector2Array(-22, -16, 22, -16, 22, 16, -22, 16)

@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/PomboRaivoso.tscn" id="2_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="3_hud"]
+[ext_resource type="Script" path="res://scripts/Fase1.gd" id="4_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(3000, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat1"]
+size = Vector2(200, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat2"]
+size = Vector2(160, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat3"]
+size = Vector2(180, 20)
+
+[node name="Fase1" type="Node2D"]
+script = ExtResource("4_script")
+
+[node name="Sky" type="ColorRect" parent="."]
+offset_left = -500.0
+offset_top = -400.0
+offset_right = 2500.0
+offset_bottom = 800.0
+color = Color(0.45, 0.65, 0.88, 1)
+
+[node name="Building1" type="Polygon2D" parent="."]
+color = Color(0.75, 0.7, 0.6, 1)
+polygon = PackedVector2Array(50, 580, 50, 350, 180, 350, 180, 580)
+
+[node name="Window1a" type="Polygon2D" parent="Building1"]
+color = Color(0.5, 0.7, 0.85, 1)
+polygon = PackedVector2Array(70, 380, 100, 380, 100, 410, 70, 410)
+
+[node name="Window1b" type="Polygon2D" parent="Building1"]
+color = Color(0.5, 0.7, 0.85, 1)
+polygon = PackedVector2Array(120, 380, 150, 380, 150, 410, 120, 410)
+
+[node name="Window1c" type="Polygon2D" parent="Building1"]
+color = Color(0.5, 0.7, 0.85, 1)
+polygon = PackedVector2Array(70, 440, 100, 440, 100, 470, 70, 470)
+
+[node name="Window1d" type="Polygon2D" parent="Building1"]
+color = Color(0.5, 0.7, 0.85, 1)
+polygon = PackedVector2Array(120, 440, 150, 440, 150, 470, 120, 470)
+
+[node name="Door1" type="Polygon2D" parent="Building1"]
+color = Color(0.4, 0.25, 0.15, 1)
+polygon = PackedVector2Array(95, 520, 135, 520, 135, 580, 95, 580)
+
+[node name="Building2" type="Polygon2D" parent="."]
+color = Color(0.85, 0.78, 0.65, 1)
+polygon = PackedVector2Array(220, 580, 220, 300, 380, 300, 380, 580)
+
+[node name="Window2a" type="Polygon2D" parent="Building2"]
+color = Color(0.5, 0.7, 0.85, 1)
+polygon = PackedVector2Array(240, 330, 275, 330, 275, 365, 240, 365)
+
+[node name="Window2b" type="Polygon2D" parent="Building2"]
+color = Color(0.5, 0.7, 0.85, 1)
+polygon = PackedVector2Array(320, 330, 355, 330, 355, 365, 320, 365)
+
+[node name="Building3" type="Polygon2D" parent="."]
+color = Color(0.7, 0.65, 0.55, 1)
+polygon = PackedVector2Array(500, 580, 500, 380, 650, 380, 650, 580)
+
+[node name="Building4" type="Polygon2D" parent="."]
+color = Color(0.8, 0.72, 0.58, 1)
+polygon = PackedVector2Array(750, 580, 750, 320, 920, 320, 920, 580)
+
+[node name="Building5" type="Polygon2D" parent="."]
+color = Color(0.72, 0.68, 0.6, 1)
+polygon = PackedVector2Array(1000, 580, 1000, 360, 1150, 360, 1150, 580)
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(750, 600)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="Sidewalk" type="Polygon2D" parent="Ground"]
+color = Color(0.55, 0.52, 0.48, 1)
+polygon = PackedVector2Array(-1500, -20, 1500, -20, 1500, 20, -1500, 20)
+
+[node name="SidewalkLine" type="Polygon2D" parent="Ground"]
+color = Color(0.45, 0.42, 0.38, 1)
+polygon = PackedVector2Array(-1500, -20, 1500, -20, 1500, -16, -1500, -16)
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(350, 460)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_plat1")
+
+[node name="Visual" type="Polygon2D" parent="Platform1"]
+color = Color(0.5, 0.42, 0.32, 1)
+polygon = PackedVector2Array(-100, -10, 100, -10, 100, 10, -100, 10)
+
+[node name="TopLine" type="Polygon2D" parent="Platform1"]
+color = Color(0.6, 0.52, 0.42, 1)
+polygon = PackedVector2Array(-100, -10, 100, -10, 100, -6, -100, -6)
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(650, 380)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_plat2")
+
+[node name="Visual" type="Polygon2D" parent="Platform2"]
+color = Color(0.5, 0.42, 0.32, 1)
+polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
+
+[node name="TopLine" type="Polygon2D" parent="Platform2"]
+color = Color(0.6, 0.52, 0.42, 1)
+polygon = PackedVector2Array(-80, -10, 80, -10, 80, -6, -80, -6)
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(950, 440)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+shape = SubResource("RectangleShape2D_plat3")
+
+[node name="Visual" type="Polygon2D" parent="Platform3"]
+color = Color(0.5, 0.42, 0.32, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, 10, -90, 10)
+
+[node name="TopLine" type="Polygon2D" parent="Platform3"]
+color = Color(0.6, 0.52, 0.42, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, -6, -90, -6)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(100, 520)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+limit_left = -200
+limit_bottom = 700
+limit_smoothed = true
+
+[node name="PomboRaivoso1" parent="." instance=ExtResource("2_enemy")]
+position = Vector2(500, 350)
+
+[node name="PomboRaivoso2" parent="." instance=ExtResource("2_enemy")]
+position = Vector2(900, 300)
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
