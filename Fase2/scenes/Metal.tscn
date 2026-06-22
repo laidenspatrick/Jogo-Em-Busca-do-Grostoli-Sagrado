@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/Coletavel.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="Shape_metal"]
+size = Vector2(22, 22)
+
+[node name="Metal" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+item_type = "metal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Shape_metal")
+
+[node name="Glow" type="Polygon2D" parent="."]
+color = Color(0.75, 0.8, 0.88, 0.25)
+polygon = PackedVector2Array(-15, -15, 15, -15, 15, 15, -15, 15)
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.62, 0.66, 0.72, 1)
+polygon = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
+
+[node name="Highlight" type="Polygon2D" parent="."]
+color = Color(0.85, 0.88, 0.93, 1)
+polygon = PackedVector2Array(-9, -9, -2, -9, -9, -2)
+
+[node name="Shadow" type="Polygon2D" parent="."]
+color = Color(0.4, 0.43, 0.48, 1)
+polygon = PackedVector2Array(2, 9, 9, 9, 9, 2)
+
+[node name="Bolt" type="Polygon2D" parent="."]
+color = Color(0.3, 0.32, 0.36, 1)
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)

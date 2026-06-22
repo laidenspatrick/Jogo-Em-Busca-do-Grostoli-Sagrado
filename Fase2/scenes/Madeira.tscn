@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/Coletavel.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="Shape_madeira"]
+size = Vector2(26, 16)
+
+[node name="Madeira" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+item_type = "madeira"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Shape_madeira")
+
+[node name="Glow" type="Polygon2D" parent="."]
+color = Color(0.7, 0.5, 0.3, 0.25)
+polygon = PackedVector2Array(-16, -10, 16, -10, 16, 10, -16, 10)
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.52, 0.34, 0.18, 1)
+polygon = PackedVector2Array(-12, -7, 12, -7, 12, 7, -12, 7)
+
+[node name="GrainLine1" type="Polygon2D" parent="."]
+color = Color(0.4, 0.25, 0.12, 1)
+polygon = PackedVector2Array(-12, -2, 12, -2, 12, -0.5, -12, -0.5)
+
+[node name="GrainLine2" type="Polygon2D" parent="."]
+color = Color(0.4, 0.25, 0.12, 1)
+polygon = PackedVector2Array(-12, 2, 12, 2, 12, 3.5, -12, 3.5)
+
+[node name="Highlight" type="Polygon2D" parent="."]
+color = Color(0.68, 0.46, 0.26, 1)
+polygon = PackedVector2Array(-12, -7, 12, -7, 12, -5, -12, -5)

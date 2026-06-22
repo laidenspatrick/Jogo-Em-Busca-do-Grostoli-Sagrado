@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://e8m4sfxjuur6"]
+
+[ext_resource type="Script" uid="uid://klu5ixenhycn" path="res://scripts/MainMenu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://ia8kulxxfrbc" path="res://textures/sun.png" id="2_0ykhv"]
+
+[node name="MainMenu" type="Control" unique_id=1929825830]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1357645041]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12, 0.3, 0.12, 1)
+
+[node name="Sun" type="TextureRect" parent="." unique_id=682139171]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -230.0
+offset_top = 80.0
+offset_right = -30.0
+offset_bottom = 280.0
+grow_horizontal = 0
+texture = ExtResource("2_0ykhv")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=656118114]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 100.0
+offset_right = 990.0
+offset_bottom = 180.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 52
+text = "GAÚCHO - O JOGO"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="." unique_id=1161263475]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 185.0
+offset_right = 940.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(0.9, 0.9, 0.8, 0.8)
+theme_override_font_sizes/font_size = 22
+text = "Aventura no Rio Grande do Sul"
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="." unique_id=365806536]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 320.0
+offset_right = 790.0
+offset_bottom = 380.0
+theme_override_font_sizes/font_size = 28
+text = "JOGAR"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1194178294]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 400.0
+offset_right = 790.0
+offset_bottom = 460.0
+theme_override_font_sizes/font_size = 28
+text = "SAIR"
+
+[node name="ControlsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 480.0
+offset_right = 400.0
+offset_bottom = 660.0
+
+[node name="ControlsTitle" type="Label" parent="ControlsPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 348.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.85, 0.4, 1)
+text = "Comandos"
+
+[node name="ControlsList" type="Label" parent="ControlsPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 38.0
+offset_right = 348.0
+offset_bottom = 172.0
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 1, 1, 0.9)
+text = "A / D — Mover
+SPACE — Pular (aperte 2x no ar p/ duplo salto)
+SHIFT — Esquivar (dash)
+ENTER — Atacar"
+
+[node name="Credits" type="Label" parent="." unique_id=438287517]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 668.0
+offset_right = 1240.0
+offset_bottom = 708.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.5)
+theme_override_font_sizes/font_size = 14
+text = "PUCRS - Cadeira de Jogos - 2026 | Patrick Laidens, Fernanda Franceschini, Leonardo Chiao e Fernando Neto"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

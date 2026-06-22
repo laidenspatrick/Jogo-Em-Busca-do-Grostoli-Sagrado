@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ArmaPickup.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="Shape_pickup"]
+size = Vector2(30, 30)
+
+[node name="ArmaPickup" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Shape_pickup")
+
+[node name="Body" type="Polygon2D" parent="."]
+color = Color(0.55, 0.35, 0.1, 1)
+polygon = PackedVector2Array(-5, -14, 5, -14, 5, 14, -5, 14)
+
+[node name="Fork1" type="Polygon2D" parent="."]
+color = Color(0.55, 0.35, 0.1, 1)
+polygon = PackedVector2Array(-10, -14, -6, -14, -6, -6, -10, -6)
+
+[node name="Fork2" type="Polygon2D" parent="."]
+color = Color(0.55, 0.35, 0.1, 1)
+polygon = PackedVector2Array(6, -14, 10, -14, 10, -6, 6, -6)
+
+[node name="Band" type="Polygon2D" parent="."]
+color = Color(0.85, 0.25, 0.1, 1)
+polygon = PackedVector2Array(-10, -14, -8, -14, 10, -6, 10, -4, -8, -12, -10, -12)
+
+[node name="Pinhao" type="Polygon2D" parent="."]
+color = Color(0.78, 0.62, 0.3, 1)
+polygon = PackedVector2Array(-4, -8, 0, -13, 4, -8)
+
+[node name="Glow" type="Polygon2D" parent="."]
+color = Color(1.0, 0.9, 0.3, 0.2)
+polygon = PackedVector2Array(-18, -20, 18, -20, 18, 20, -18, 20)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -65.0
+offset_top = -42.0
+offset_right = 65.0
+offset_bottom = -20.0
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1, 1, 0.3, 1)
+text = "Estilingue de Pinhão!"
+horizontal_alignment = 1

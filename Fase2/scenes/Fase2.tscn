@@ -1,0 +1,480 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="2_hud"]
+[ext_resource type="Script" path="res://scripts/Fase2.gd" id="3_script"]
+[ext_resource type="PackedScene" path="res://scenes/Soundtrack.tscn" id="4_soundtrack"]
+[ext_resource type="PackedScene" path="res://scenes/Portal.tscn" id="5_portal"]
+[ext_resource type="PackedScene" path="res://scenes/AguaViva.tscn" id="6_aguaviva"]
+[ext_resource type="PackedScene" path="res://scenes/Metal.tscn" id="7_metal"]
+[ext_resource type="PackedScene" path="res://scenes/Madeira.tscn" id="8_madeira"]
+[ext_resource type="PackedScene" path="res://scenes/ArmaPickup.tscn" id="9_arma"]
+
+[sub_resource type="RectangleShape2D" id="Shape_beach_inicial"]
+size = Vector2(640, 40)
+
+[sub_resource type="RectangleShape2D" id="Shape_beach_recon"]
+size = Vector2(260, 40)
+
+[sub_resource type="RectangleShape2D" id="Shape_beach_atlantida"]
+size = Vector2(300, 40)
+
+[sub_resource type="RectangleShape2D" id="Shape_pier_lg"]
+size = Vector2(180, 20)
+
+[sub_resource type="RectangleShape2D" id="Shape_pier_sm"]
+size = Vector2(150, 20)
+
+[sub_resource type="RectangleShape2D" id="Shape_ponte"]
+size = Vector2(140, 20)
+
+[sub_resource type="RectangleShape2D" id="Shape_aviso"]
+size = Vector2(24, 140)
+
+[sub_resource type="RectangleShape2D" id="Shape_barreira"]
+size = Vector2(16, 420)
+
+[sub_resource type="RectangleShape2D" id="Shape_plank"]
+size = Vector2(34, 20)
+
+[node name="Fase2" type="Node2D"]
+script = ExtResource("3_script")
+
+[node name="Soundtrack" parent="." instance=ExtResource("4_soundtrack")]
+
+[node name="Sky" type="ColorRect" parent="."]
+offset_left = -200.0
+offset_top = -400.0
+offset_right = 2900.0
+offset_bottom = 900.0
+color = Color(0.56, 0.78, 0.85, 1)
+
+[node name="SkyGlow" type="ColorRect" parent="."]
+offset_left = -200.0
+offset_top = 200.0
+offset_right = 2900.0
+offset_bottom = 580.0
+color = Color(0.78, 0.85, 0.78, 0.35)
+
+[node name="Sea" type="Polygon2D" parent="."]
+color = Color(0.16, 0.46, 0.62, 1)
+polygon = PackedVector2Array(-200, 560, 2900, 560, 2900, 900, -200, 900)
+
+[node name="SeaShallow" type="Polygon2D" parent="."]
+color = Color(0.28, 0.62, 0.72, 0.65)
+polygon = PackedVector2Array(-200, 560, 2900, 560, 2900, 605, -200, 605)
+
+[node name="SeaSparkle1" type="Polygon2D" parent="."]
+color = Color(0.85, 0.95, 0.95, 0.3)
+polygon = PackedVector2Array(300, 600, 360, 600, 360, 606, 300, 606)
+
+[node name="SeaSparkle2" type="Polygon2D" parent="."]
+color = Color(0.85, 0.95, 0.95, 0.3)
+polygon = PackedVector2Array(1400, 595, 1460, 595, 1460, 601, 1400, 601)
+
+[node name="SeaSparkle3" type="Polygon2D" parent="."]
+color = Color(0.85, 0.95, 0.95, 0.3)
+polygon = PackedVector2Array(2200, 600, 2260, 600, 2260, 606, 2200, 606)
+
+[node name="AtlantidaRuins" type="Node2D" parent="."]
+
+[node name="Ruin1" type="Polygon2D" parent="AtlantidaRuins"]
+color = Color(0.5, 0.55, 0.58, 0.55)
+polygon = PackedVector2Array(2550, 580, 2550, 480, 2575, 460, 2600, 480, 2600, 580)
+
+[node name="Ruin2" type="Polygon2D" parent="AtlantidaRuins"]
+color = Color(0.45, 0.5, 0.54, 0.5)
+polygon = PackedVector2Array(2640, 580, 2640, 510, 2660, 495, 2680, 510, 2680, 580)
+
+[node name="FimFase" type="Node2D" parent="."]
+
+[node name="Wall" type="Polygon2D" parent="FimFase"]
+color = Color(0.5, 0.42, 0.3, 1)
+polygon = PackedVector2Array(2790, 200, 2840, 200, 2840, 580, 2790, 580)
+
+[node name="Sign" type="Polygon2D" parent="FimFase"]
+color = Color(0.8, 0.65, 0.2, 1)
+polygon = PackedVector2Array(2798, 290, 2832, 290, 2832, 340, 2798, 340)
+
+[node name="PraiaInicial" type="StaticBody2D" parent="."]
+position = Vector2(260, 600)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PraiaInicial"]
+shape = SubResource("Shape_beach_inicial")
+
+[node name="Sand" type="Polygon2D" parent="PraiaInicial"]
+color = Color(0.85, 0.74, 0.52, 1)
+polygon = PackedVector2Array(-320, -20, 320, -20, 320, 20, -320, 20)
+
+[node name="SandTop" type="Polygon2D" parent="PraiaInicial"]
+color = Color(0.92, 0.83, 0.62, 1)
+polygon = PackedVector2Array(-320, -20, 320, -20, 320, -15, -320, -15)
+
+[node name="Piers" type="Node2D" parent="."]
+
+[node name="Pier1" type="StaticBody2D" parent="Piers"]
+position = Vector2(700, 480)
+collision_layer = 1
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piers/Pier1"]
+shape = SubResource("Shape_pier_lg")
+[node name="Plank" type="Polygon2D" parent="Piers/Pier1"]
+color = Color(0.46, 0.34, 0.22, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, 10, -90, 10)
+[node name="PlankTop" type="Polygon2D" parent="Piers/Pier1"]
+color = Color(0.6, 0.46, 0.3, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, -6, -90, -6)
+[node name="Post1" type="Polygon2D" parent="Piers/Pier1"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(-78, 10, -68, 10, -68, 90, -78, 90)
+[node name="Post2" type="Polygon2D" parent="Piers/Pier1"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(68, 10, 78, 10, 78, 90, 68, 90)
+
+[node name="Pier2" type="StaticBody2D" parent="Piers"]
+position = Vector2(920, 410)
+collision_layer = 1
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piers/Pier2"]
+shape = SubResource("Shape_pier_sm")
+[node name="Plank" type="Polygon2D" parent="Piers/Pier2"]
+color = Color(0.46, 0.34, 0.22, 1)
+polygon = PackedVector2Array(-75, -10, 75, -10, 75, 10, -75, 10)
+[node name="PlankTop" type="Polygon2D" parent="Piers/Pier2"]
+color = Color(0.6, 0.46, 0.3, 1)
+polygon = PackedVector2Array(-75, -10, 75, -10, 75, -6, -75, -6)
+[node name="Post1" type="Polygon2D" parent="Piers/Pier2"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(-64, 10, -54, 10, -54, 160, -64, 160)
+[node name="Post2" type="Polygon2D" parent="Piers/Pier2"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(54, 10, 64, 10, 64, 160, 54, 160)
+
+[node name="Pier3" type="StaticBody2D" parent="Piers"]
+position = Vector2(1140, 480)
+collision_layer = 1
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piers/Pier3"]
+shape = SubResource("Shape_pier_lg")
+[node name="Plank" type="Polygon2D" parent="Piers/Pier3"]
+color = Color(0.46, 0.34, 0.22, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, 10, -90, 10)
+[node name="PlankTop" type="Polygon2D" parent="Piers/Pier3"]
+color = Color(0.6, 0.46, 0.3, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, -6, -90, -6)
+[node name="Post1" type="Polygon2D" parent="Piers/Pier3"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(-78, 10, -68, 10, -68, 90, -78, 90)
+[node name="Post2" type="Polygon2D" parent="Piers/Pier3"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(68, 10, 78, 10, 78, 90, 68, 90)
+[node name="BrokenPlank" type="Polygon2D" parent="Piers/Pier3"]
+color = Color(0.4, 0.3, 0.2, 1)
+polygon = PackedVector2Array(30, -10, 50, -10, 44, 10, 28, 6)
+
+[node name="Pier4" type="StaticBody2D" parent="Piers"]
+position = Vector2(1360, 410)
+collision_layer = 1
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piers/Pier4"]
+shape = SubResource("Shape_pier_sm")
+[node name="Plank" type="Polygon2D" parent="Piers/Pier4"]
+color = Color(0.46, 0.34, 0.22, 1)
+polygon = PackedVector2Array(-75, -10, 75, -10, 75, 10, -75, 10)
+[node name="PlankTop" type="Polygon2D" parent="Piers/Pier4"]
+color = Color(0.6, 0.46, 0.3, 1)
+polygon = PackedVector2Array(-75, -10, 75, -10, 75, -6, -75, -6)
+[node name="Post1" type="Polygon2D" parent="Piers/Pier4"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(-64, 10, -54, 10, -54, 160, -64, 160)
+[node name="Post2" type="Polygon2D" parent="Piers/Pier4"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(54, 10, 64, 10, 64, 160, 54, 160)
+
+[node name="Pier5" type="StaticBody2D" parent="Piers"]
+position = Vector2(1580, 480)
+collision_layer = 1
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piers/Pier5"]
+shape = SubResource("Shape_pier_lg")
+[node name="Plank" type="Polygon2D" parent="Piers/Pier5"]
+color = Color(0.46, 0.34, 0.22, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, 10, -90, 10)
+[node name="PlankTop" type="Polygon2D" parent="Piers/Pier5"]
+color = Color(0.6, 0.46, 0.3, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, -6, -90, -6)
+[node name="Post1" type="Polygon2D" parent="Piers/Pier5"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(-78, 10, -68, 10, -68, 90, -78, 90)
+[node name="Post2" type="Polygon2D" parent="Piers/Pier5"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(68, 10, 78, 10, 78, 90, 68, 90)
+
+[node name="Pier6" type="StaticBody2D" parent="Piers"]
+position = Vector2(1800, 410)
+collision_layer = 1
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piers/Pier6"]
+shape = SubResource("Shape_pier_sm")
+[node name="Plank" type="Polygon2D" parent="Piers/Pier6"]
+color = Color(0.46, 0.34, 0.22, 1)
+polygon = PackedVector2Array(-75, -10, 75, -10, 75, 10, -75, 10)
+[node name="PlankTop" type="Polygon2D" parent="Piers/Pier6"]
+color = Color(0.6, 0.46, 0.3, 1)
+polygon = PackedVector2Array(-75, -10, 75, -10, 75, -6, -75, -6)
+[node name="Post1" type="Polygon2D" parent="Piers/Pier6"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(-64, 10, -54, 10, -54, 160, -64, 160)
+[node name="Post2" type="Polygon2D" parent="Piers/Pier6"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(54, 10, 64, 10, 64, 160, 54, 160)
+[node name="BrokenPlank" type="Polygon2D" parent="Piers/Pier6"]
+color = Color(0.4, 0.3, 0.2, 1)
+polygon = PackedVector2Array(-50, -10, -30, -10, -36, 10, -52, 6)
+
+[node name="Pier7" type="StaticBody2D" parent="Piers"]
+position = Vector2(2020, 480)
+collision_layer = 1
+collision_mask = 0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piers/Pier7"]
+shape = SubResource("Shape_pier_lg")
+[node name="Plank" type="Polygon2D" parent="Piers/Pier7"]
+color = Color(0.46, 0.34, 0.22, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, 10, -90, 10)
+[node name="PlankTop" type="Polygon2D" parent="Piers/Pier7"]
+color = Color(0.6, 0.46, 0.3, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, -6, -90, -6)
+[node name="Post1" type="Polygon2D" parent="Piers/Pier7"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(-78, 10, -68, 10, -68, 90, -78, 90)
+[node name="Post2" type="Polygon2D" parent="Piers/Pier7"]
+color = Color(0.36, 0.26, 0.16, 1)
+polygon = PackedVector2Array(68, 10, 78, 10, 78, 90, 68, 90)
+
+[node name="PraiaReconstrucao" type="StaticBody2D" parent="."]
+position = Vector2(2275, 600)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PraiaReconstrucao"]
+shape = SubResource("Shape_beach_recon")
+
+[node name="Sand" type="Polygon2D" parent="PraiaReconstrucao"]
+color = Color(0.85, 0.74, 0.52, 1)
+polygon = PackedVector2Array(-130, -20, 130, -20, 130, 20, -130, 20)
+
+[node name="SandTop" type="Polygon2D" parent="PraiaReconstrucao"]
+color = Color(0.92, 0.83, 0.62, 1)
+polygon = PackedVector2Array(-130, -20, 130, -20, 130, -15, -130, -15)
+
+[node name="SignReconstrucao" type="Label" parent="."]
+position = Vector2(2155, 500)
+text = "Reconstrua o pier com\nMetal e Madeira!"
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+horizontal_alignment = 1
+
+[node name="AvisoArea" type="Area2D" parent="."]
+position = Vector2(2385, 540)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AvisoArea"]
+shape = SubResource("Shape_aviso")
+
+[node name="Barreira" type="StaticBody2D" parent="."]
+position = Vector2(2412, 500)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barreira"]
+shape = SubResource("Shape_barreira")
+
+[node name="Debris1" type="Polygon2D" parent="Barreira"]
+color = Color(0.32, 0.22, 0.14, 1)
+polygon = PackedVector2Array(-8, -90, 8, -94, 8, -60, -8, -56)
+
+[node name="Debris2" type="Polygon2D" parent="Barreira"]
+color = Color(0.4, 0.28, 0.17, 1)
+polygon = PackedVector2Array(-8, -40, 8, -44, 8, -4, -8, 0)
+
+[node name="Debris3" type="Polygon2D" parent="Barreira"]
+color = Color(0.32, 0.22, 0.14, 1)
+polygon = PackedVector2Array(-8, 16, 8, 12, 8, 60, -8, 64)
+
+[node name="DebrisPlankH1" type="Polygon2D" parent="Barreira"]
+color = Color(0.45, 0.32, 0.2, 1)
+polygon = PackedVector2Array(-14, -70, 14, -76, 14, -68, -14, -62)
+
+[node name="DebrisPlankH2" type="Polygon2D" parent="Barreira"]
+color = Color(0.45, 0.32, 0.2, 1)
+polygon = PackedVector2Array(-14, 24, 14, 18, 14, 26, -14, 32)
+
+[node name="WarningStripe1" type="Polygon2D" parent="Barreira"]
+color = Color(0.9, 0.7, 0.15, 0.85)
+polygon = PackedVector2Array(-6, -100, 6, -100, 6, -90, -6, -90)
+
+[node name="PonteFinal" type="StaticBody2D" parent="."]
+position = Vector2(2460, 600)
+collision_layer = 1
+collision_mask = 0
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PonteFinal"]
+shape = SubResource("Shape_ponte")
+
+[node name="Planks" type="Node2D" parent="PonteFinal"]
+
+[node name="Plank1" type="Polygon2D" parent="PonteFinal/Planks"]
+position = Vector2(-52, 0)
+color = Color(0.55, 0.4, 0.24, 1)
+polygon = PackedVector2Array(-17, -10, 17, -10, 17, 10, -17, 10)
+
+[node name="Plank1Top" type="Polygon2D" parent="PonteFinal/Planks/Plank1"]
+color = Color(0.7, 0.55, 0.32, 1)
+polygon = PackedVector2Array(-17, -10, 17, -10, 17, -6, -17, -6)
+
+[node name="Plank2" type="Polygon2D" parent="PonteFinal/Planks"]
+position = Vector2(-17, 0)
+color = Color(0.58, 0.43, 0.26, 1)
+polygon = PackedVector2Array(-17, -10, 17, -10, 17, 10, -17, 10)
+
+[node name="Plank2Top" type="Polygon2D" parent="PonteFinal/Planks/Plank2"]
+color = Color(0.72, 0.57, 0.34, 1)
+polygon = PackedVector2Array(-17, -10, 17, -10, 17, -6, -17, -6)
+
+[node name="Plank3" type="Polygon2D" parent="PonteFinal/Planks"]
+position = Vector2(18, 0)
+color = Color(0.55, 0.4, 0.24, 1)
+polygon = PackedVector2Array(-17, -10, 17, -10, 17, 10, -17, 10)
+
+[node name="Plank3Top" type="Polygon2D" parent="PonteFinal/Planks/Plank3"]
+color = Color(0.7, 0.55, 0.32, 1)
+polygon = PackedVector2Array(-17, -10, 17, -10, 17, -6, -17, -6)
+
+[node name="Plank4" type="Polygon2D" parent="PonteFinal/Planks"]
+position = Vector2(53, 0)
+color = Color(0.58, 0.43, 0.26, 1)
+polygon = PackedVector2Array(-17, -10, 17, -10, 17, 10, -17, 10)
+
+[node name="Plank4Top" type="Polygon2D" parent="PonteFinal/Planks/Plank4"]
+color = Color(0.72, 0.57, 0.34, 1)
+polygon = PackedVector2Array(-17, -10, 17, -10, 17, -6, -17, -6)
+
+[node name="PraiaAtlantida" type="StaticBody2D" parent="."]
+position = Vector2(2660, 600)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PraiaAtlantida"]
+shape = SubResource("Shape_beach_atlantida")
+
+[node name="Sand" type="Polygon2D" parent="PraiaAtlantida"]
+color = Color(0.88, 0.78, 0.56, 1)
+polygon = PackedVector2Array(-150, -20, 150, -20, 150, 20, -150, 20)
+
+[node name="SandTop" type="Polygon2D" parent="PraiaAtlantida"]
+color = Color(0.95, 0.87, 0.66, 1)
+polygon = PackedVector2Array(-150, -20, 150, -20, 150, -15, -150, -15)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(80, 520)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+limit_left = -60
+limit_right = 2840
+limit_bottom = 720
+limit_smoothed = true
+
+[node name="AguaViva1" parent="." instance=ExtResource("6_aguaviva")]
+position = Vector2(810, 545)
+
+[node name="AguaViva2" parent="." instance=ExtResource("6_aguaviva")]
+position = Vector2(1250, 545)
+
+[node name="AguaViva3" parent="." instance=ExtResource("6_aguaviva")]
+position = Vector2(1690, 545)
+
+[node name="AguaViva4" parent="." instance=ExtResource("6_aguaviva")]
+position = Vector2(2085, 545)
+
+[node name="AguaViva5" parent="." instance=ExtResource("6_aguaviva")]
+position = Vector2(2460, 555)
+
+[node name="Metal1" parent="." instance=ExtResource("7_metal")]
+position = Vector2(200, 560)
+
+[node name="EstilinguePickup" parent="." instance=ExtResource("9_arma")]
+position = Vector2(470, 545)
+
+[node name="Madeira1" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(350, 560)
+
+[node name="Metal2" parent="." instance=ExtResource("7_metal")]
+position = Vector2(700, 440)
+
+[node name="Madeira2" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(655, 440)
+
+[node name="Madeira3" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(920, 370)
+
+[node name="Metal3" parent="." instance=ExtResource("7_metal")]
+position = Vector2(960, 370)
+
+[node name="Metal4" parent="." instance=ExtResource("7_metal")]
+position = Vector2(1140, 440)
+
+[node name="Madeira4" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(1095, 440)
+
+[node name="Madeira5" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(1360, 370)
+
+[node name="Metal5" parent="." instance=ExtResource("7_metal")]
+position = Vector2(1400, 370)
+
+[node name="Metal6" parent="." instance=ExtResource("7_metal")]
+position = Vector2(1580, 440)
+
+[node name="Madeira6" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(1535, 440)
+
+[node name="Madeira7" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(1800, 370)
+
+[node name="Metal7" parent="." instance=ExtResource("7_metal")]
+position = Vector2(1840, 370)
+
+[node name="Metal8" parent="." instance=ExtResource("7_metal")]
+position = Vector2(2020, 440)
+
+[node name="Madeira8" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(2065, 440)
+
+[node name="Metal9" parent="." instance=ExtResource("7_metal")]
+position = Vector2(2210, 560)
+
+[node name="Madeira9" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(2280, 560)
+
+[node name="Metal10" parent="." instance=ExtResource("7_metal")]
+position = Vector2(2340, 560)
+
+[node name="Madeira10" parent="." instance=ExtResource("8_madeira")]
+position = Vector2(2155, 560)
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="Portal" parent="." instance=ExtResource("5_portal")]
+position = Vector2(2780, 545)
+target_scene = "res://scenes/Fase3.tscn"
+
+[node name="Label" parent="Portal" index="6"]
+text = "FASE 3"
